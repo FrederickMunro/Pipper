@@ -1,9 +1,9 @@
+let contact = document.getElementById('contact'),
+    fullBox = document.getElementById('fullBox');
+contact.addEventListener('mouseover', () => {
+    fullBox.style.visibility = "visible";
+})
 
-document.getElementById('contact').addEventListener('click', () => {
-    let contactBox = document.getElementById('contactBox');
-    if (contactBox.style.visibility == "hidden") {
-        contactBox.style.visibility = "visible";
-    } else {
-        contactBox.style.visibility = 'hidden';
-    }
+contact.addEventListener('mouseleave', () => {
+    fullBox.style.visibility = "hidden";
 })
