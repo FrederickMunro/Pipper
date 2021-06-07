@@ -60,13 +60,11 @@
     
     h1 {
         font-size: 60px;
-    }
-    
-    h2 {
-        font-size: 35px;
+        color: lightyellow;
     }
     
     .choices {
+        position: relative;
         text-align: center;
         font-size: 20px;
         color: lightyellow;
