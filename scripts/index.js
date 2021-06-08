@@ -137,6 +137,31 @@ choices[0].addEventListener('click', () => {
         submitDiv.style.visibility = "hidden";
         submitDiv.style.cursor = "pointer";
         submitDiv.style.fontSize = "17px";
+        submitDiv.addEventListener('click', () => {
+            let username = usernameBox.innerHTML;
+                password = passwordBox.innerHTML;
+            
+            if (username == "admin" && password == "admin1234") {
+
+            } else {
+                usernameBox.style.border = "2px solid red";
+                passwordBox.style.border = "2px solid red";
+            }
+        })
+
+        submitDiv.addEventListener('keyup', (e) => {
+            if (e.code == "Enter") {
+                let username = usernameBox.innerHTML;
+                    password = passwordBox.innerHTML;
+                
+                if (username == "admin" && password == "admin1234") {
+
+                } else {
+                    usernameBox.style.border = "2px solid red";
+                    passwordBox.style.border = "2px solid red";
+                }
+            }
+        });
 
         choices[0].appendChild(usernameDiv).appendChild(usernameBox);
         choices[0].appendChild(passwordDiv).appendChild(passwordBox);
@@ -145,7 +170,8 @@ choices[0].addEventListener('click', () => {
 
         let sizeWide = 450,
             sizeHigh = 50,
-            size = 0;
+            size = 0,
+            font = 20;
         setInterval(function() {
             if (sizeHigh >= 170) {
                 clearInterval(null);
@@ -163,6 +189,9 @@ choices[0].addEventListener('click', () => {
                     }
                 }, 15);
             } else {
+                if (choices[0].style.fontSize < 35) {
+                    choices[0].style.fontSize = ++font + "px";
+                }
                 sizeHigh += 2;
                 choices[0].style.height = sizeHigh + "px";
                 sizeWide += 3;
@@ -182,8 +211,63 @@ choices[0].addEventListener('click', () => {
                 choices[0].style.width = "450px";
                 choices[0].style.height = "25px";
                 choices[0].style.cursor = "pointer";
+                choices[0].style.fontSize = "20px";
             }
         })
     }
 });
 // 3
+
+// 4
+let signupPresent = false;
+choices[1].addEventListener('click', () => {
+    if (!signupPresent) {
+        let newSignup = document.createElement("div");
+
+        document.getElementById("left").style.backgroudnColor = "#EFEFCF";
+        document.getElementById("right").style.backgroundColor = "";
+        
+        newSignup.innerHTML = "Sign up";
+        newSignup.class = "";
+        newSignup.id = "newSignup";
+        newSignup.style.position = "absolute";
+        newSignup.style.left = "53%";
+        newSignup.style.top = "566px";
+        newSignup.style.cursor = "default";
+        newSignup.style.width = "452px";
+        newSignup.style.textAlign = "center";
+        newSignup.style.fontSize = "20px";
+        newSignup.style.color = "#36454f";
+        newSignup.style.backgroundColor = "lightyellow";
+        newSignup.style.border = "2px solid "
+        newSignup.style.borderRadius = "30px";
+        newSignup.style.paddingTop = "11px";
+        newSignup.style.height = "37px";
+
+        document.getElementById("right").appendChild(newSignup);
+
+        choices[1].style.visibility = "hidden";
+
+        let signWidth = 452,
+            signTop = 566,
+            signHeight = 37;
+        setInterval(function() {
+            if (signWidth <= 700) {
+                signWidth += 8;
+                signTop -= 12;
+                newSignup.style.top = signTop + "px";
+                newSignup.style.width = signWidth + "px";
+            } else {
+                setInterval(null);
+                setInterval(function() {
+                    if (signHeight <= 500) {
+                        signHeight += 8;
+                        newSignup.style.height = signHeight + "px";
+                    } else {
+                        setInterval(null);
+                    }
+                }, 1);
+            }
+        }, 1);
+    }
+})
